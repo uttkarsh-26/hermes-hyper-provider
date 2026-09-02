@@ -13,8 +13,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install hermes-agent source
-        run: git clone --depth 1 https://github.com/NousResearch/hermes-agent.git /tmp/hermes
+      - name: Install hermes-agent source + deps
+        run: |
+          git clone --depth 1 https://github.com/NousResearch/hermes-agent.git /tmp/hermes
+          pip install pyyaml requests
       - name: Run profile contract tests
         env:
           HERMES_REPO: /tmp/hermes
