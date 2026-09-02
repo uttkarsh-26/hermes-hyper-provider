@@ -1,0 +1,5 @@
+name: hyper
+kind: model-provider
+version: 1.0.0
+description: Charm Hyper — OpenAI-compatible inference for agentic coding
+author: Uttkarsh Tiwari

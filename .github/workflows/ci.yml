@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install hermes-agent source
+        run: git clone --depth 1 https://github.com/NousResearch/hermes-agent.git /tmp/hermes
+      - name: Run profile contract tests
+        env:
+          HERMES_REPO: /tmp/hermes
+          HYPER_API_KEY: sk-hyper-test-placeholder
+        run: python3 tests/test_hyper_profile.py
+      - name: Plugin discovery smoke (isolated HERMES_HOME)
+        env:
+          HYPER_API_KEY: sk-hyper-test-placeholder
+        run: |
+          mkdir -p /tmp/iso/plugins/model-providers
+          cp -r hyper /tmp/iso/plugins/model-providers/hyper
+          HERMES_HOME=/tmp/iso python3 - <<'EOF'
+          import os, sys
+          sys.path.insert(0, "/tmp/hermes")
+          from providers import list_providers
+          names = [p.name for p in list_providers()]
+          assert "hyper" in names, f"plugin not discovered; got {names}"
+          print("discovery OK:", "hyper" in names)
+          EOF
