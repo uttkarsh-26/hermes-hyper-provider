@@ -41,7 +41,7 @@ provider list with the full live catalog. `/model hyper` switches to it; the
 The live `/v1/models` endpoint is the source of truth (no auth needed, carries
 context windows and pricing for every model). If the live fetch fails, the picker
 falls back to a static list of four broadly useful agent models:
-`glm-5.3-flash`, `deepseek-v4-flash`, `glm-5.3`, `kimi-k3`.
+`glm-5.3-flash`, `deepseek-v4.1-flash`, `glm-5.3`, `kimi-k3`.
 
 ## Reasoning effort
 

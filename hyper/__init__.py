@@ -32,7 +32,7 @@ hyper = ProviderProfile(
     # fails — keep it to the four broadly-useful agents' models.
     fallback_models=(
         "glm-5.3-flash",
-        "deepseek-v4-flash",
+        "deepseek-v4.1-flash",
         "glm-5.3",
         "kimi-k3",
     ),
