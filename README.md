@@ -4,7 +4,7 @@ Standalone [Hermes Agent](https://github.com/NousResearch/hermes-agent) plugin t
 [Charm Hyper](https://hyper.charm.land) as a first-class provider profile.
 
 Hyper is fast, cost-effective OpenAI-compatible inference built for agentic coding:
-31 hand-picked models (GLM-5.3, DeepSeek V4, Kimi K3, Qwen3.8, ...), a public model
+a hand-picked catalog of agent models (GLM-5.3, DeepSeek V4, Kimi K3, Qwen3.8, ...), a public model
 catalog with context/pricing metadata, and per-model reasoning-effort control.
 
 ## Install
@@ -29,7 +29,7 @@ provider list with the full live catalog. `/model hyper` switches to it; the
 
 | Surface | Behavior |
 |---|---|
-| `hermes model` / `/model` picker | Hyper row with all 31 models, fetched live from the public `https://hyper.charm.land/v1/models` |
+| `hermes model` / `/model` picker | Hyper row with the full live catalog, fetched live from the public `https://hyper.charm.land/v1/models` |
 | Runtime resolution | `--provider hyper` / `/model hyper/<model>` route through the standard API-key path |
 | Context lengths | Resolved from models.dev via the `hyper.charm.land` base-URL match (all models 1M-2^20 tokens) |
 | Pricing display | From the same models.dev catalog |
