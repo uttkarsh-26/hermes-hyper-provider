@@ -16,7 +16,7 @@ jobs:
       - name: Install hermes-agent source + deps
         run: |
           git clone --depth 1 https://github.com/NousResearch/hermes-agent.git /tmp/hermes
-          pip install pyyaml requests
+          pip install pyyaml requests ruamel.yaml
       - name: Run profile contract tests
         env:
           HERMES_REPO: /tmp/hermes
